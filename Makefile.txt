@@ -1,0 +1,17 @@
+CC = g++
+CFLAGS = -Wall -Werror -g
+TARGET1 = Scheduler
+TARGET2 = Sensor
+TARGET3 = Server
+
+$(TARGET1): main.o $(TARGET1).o $(TARGET2).o $(TARGET3).o
+	$(CC) $(CFLAGS) -o main main.o $(TARGET1).o $(TARGET2).o $(TARGET3).o
+
+main.o: main.cpp $(TARGET1).h $(TARGET2).h $(TARGET3).h
+	$(CC) $(CFLAGS) -c main.cpp
+
+$(TARGET1).o: $(TARGET1).h
+
+$(TARGET2).o: $(TARGET2).h
+
+$(TARGET3).o: $(TARGET3).h
